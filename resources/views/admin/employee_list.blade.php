@@ -9,8 +9,12 @@ use Carbon\Carbon;
     img {
         object-fit: contain !important;
     }
+
 </style>
 {{-- MODALS  --}}
+
+
+
 
 <!-- Modal -->
 <div class="modal fade " data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" id="add_new_employee" tabindex="-1" aria-labelledby="add_new_employee" aria-hidden="true">
@@ -25,11 +29,11 @@ use Carbon\Carbon;
                 <div class="row  ">
                     <div class="col-md-2" style=" ">
                         <img class="bg-transparent rounded-5 img-fluid " id="showPhoto" src="{{asset("images/logo/icon3.png")}}" alt="" width="400" height="450" style="border-radius: 15px; ">
-                        <input type="file" value="{{asset("images/logo/icon3.png")}}" id="employee_photo" name="employee_photo" style="display: none" >
+                        <input type="file" value="{{asset("images/logo/icon3.png")}}" id="employee_photo" name="employee_photo" style="display: none">
                         <br>
                         <div class="d-flex mt-1 justify-content-between ">
-                            <button class=" btn btn-outline-success shadow-none" id="browse_employee_photo" > <i data-id="change_profile" data-feather="edit"></i> Change Photo</button>
-                            <button class=" btn btn-outline-danger shadow-none" id="remove_employee_photo" data-title="employee_photo" data-id="showPhoto" > <i data-id="remove_profile" data-feather="delete"></i> Remove Photo </button>
+                            <button class=" btn btn-outline-success shadow-none" id="browse_employee_photo"> <i data-id="change_profile" data-feather="edit"></i> Change Photo</button>
+                            <button class=" btn btn-outline-danger shadow-none" id="remove_employee_photo" data-title="employee_photo" data-id="showPhoto"> <i data-id="remove_profile" data-feather="delete"></i> Remove Photo </button>
                         </div>
                     </div>
                 </div>
@@ -38,7 +42,7 @@ use Carbon\Carbon;
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="employee_name">Employee Name</label>
-                            <input type="text" class="form-control shadow-none"  id="name" value="" placeholder="Employee Name">
+                            <input type="text" class="form-control shadow-none" id="name" value="" placeholder="Employee Name">
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -84,7 +88,7 @@ use Carbon\Carbon;
                 <div class="spinner-border text-primary save_employee_loader display_none" role="status" style="">
                     <span class="visually-hidden"></span>
                 </div>
-                <button type="button" class="btn btn-outline-primary  post_employee  "  >Save changes</button>
+                <button type="button" class="btn btn-outline-primary  post_employee  ">Save changes</button>
             </div>
         </div>
     </div>
@@ -209,6 +213,7 @@ use Carbon\Carbon;
 <script>
     $().ready(function() {
         getEmployeeList();
+
         function show_toast(title, body, color_class, bg_class) {
             const myToastEl = $($(".toast"));
             myToastEl.find(".toast_title").text(title);
@@ -222,10 +227,10 @@ use Carbon\Carbon;
         }
 
         //post employee
-        $(".post_employee").on('click', function () {
+        $(".post_employee").on('click', function() {
 
             $(".error_message").empty();
-            $("input").css('border','2px solid #7367F0');
+            $("input").css('border', '2px solid #7367F0');
 
             let formData = new FormData();
             let employee_photo = document.getElementById('employee_photo').files[0];
@@ -238,29 +243,30 @@ use Carbon\Carbon;
             $(".save_employee_loader").removeClass('display_none');
 
             $.ajax({
-                url: '{{route('post_employee')}}',
-                type: 'POST',
-                processData:false,
-                contentType:false,
-                data:formData,
-                success: function(response) {
+                url: '{{route('
+                post_employee ')}}'
+                , type: 'POST'
+                , processData: false
+                , contentType: false
+                , data: formData
+                , success: function(response) {
                     $('.post_employee').removeClass('display_none');
                     $(".save_employee_loader").addClass('display_none');
                     show_toast("Employee Saved Successfully", "Employee Saved Successfully", "text-success", 'bg-success')
                     getEmployeeList();
                     $("#add_new_employee").modal('hide')
-                },
-                error: function(response) {
+                }
+                , error: function(response) {
                     $('.post_employee').removeClass('display_none');
                     $(".save_employee_loader").addClass('display_none');
 
-                    $.each(response.responseJSON.errors, function (errorIndex, errorObject) {
-                        let errorInput=$("#"+errorIndex);
-                        errorInput.css('border','2px solid red');
-                        $.each(errorObject, function (errorIndexIndex, errorObjectInner) {
-                             let errorArray=errorObjectInner.split(".")
-                            $.each(errorArray, function (errorArrayIndex, error) {
-                                let errorMessage= $(`<p class="text-danger m-0 error_message">`+error+`</p>`)
+                    $.each(response.responseJSON.errors, function(errorIndex, errorObject) {
+                        let errorInput = $("#" + errorIndex);
+                        errorInput.css('border', '2px solid red');
+                        $.each(errorObject, function(errorIndexIndex, errorObjectInner) {
+                            let errorArray = errorObjectInner.split(".")
+                            $.each(errorArray, function(errorArrayIndex, error) {
+                                let errorMessage = $(`<p class="text-danger m-0 error_message">` + error + `</p>`)
                                 errorInput.after(errorMessage);
                             });
 
@@ -288,7 +294,7 @@ use Carbon\Carbon;
                     <div class="col-md-2" style="" >
                         Employee Image
                         <br>
-                    <img class="bg-transparent rounded-5 " src="`+employee_id.employee_image+`" alt="" width="150" height="150" style="" >
+                    <img class="bg-transparent rounded-5 " src="` + employee_id.employee_image + `" alt="" width="150" height="150" style="" >
                         <br>
                     <div class="text-left mt-1" style=""  >
                         <button  class=" btn btn-success shadow-none" > <i data-id="change_profile" data-feather="edit" ></i> Change</button>
