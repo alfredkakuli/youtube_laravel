@@ -243,8 +243,7 @@ use Carbon\Carbon;
             $(".save_employee_loader").removeClass('display_none');
 
             $.ajax({
-                url: '{{route('
-                post_employee ')}}'
+                url: '{{route('post_employee')}}'
                 , type: 'POST'
                 , processData: false
                 , contentType: false
