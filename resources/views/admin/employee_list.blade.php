@@ -14,8 +14,6 @@ use Carbon\Carbon;
 {{-- MODALS  --}}
 
 
-
-
 <!-- Modal -->
 <div class="modal fade " data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" id="add_new_employee" tabindex="-1" aria-labelledby="add_new_employee" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
@@ -83,13 +81,14 @@ use Carbon\Carbon;
                 </div>
 
             </div>
-            <div class="modal-footer">
 
+            <div class="modal-footer">
                 <div class="spinner-border text-primary save_employee_loader display_none" role="status" style="">
                     <span class="visually-hidden"></span>
                 </div>
                 <button type="button" class="btn btn-outline-primary  post_employee  ">Save changes</button>
             </div>
+
         </div>
     </div>
 </div>
@@ -136,7 +135,7 @@ use Carbon\Carbon;
                                 <option value="1">Inactive</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
-                                <option value="all" selected>All</option>
+                                <option value="all" selected>All</option>xamp
                             </select>
                         </div>
 
@@ -164,19 +163,19 @@ use Carbon\Carbon;
 
                 <div class="d-flex justify-content-end w-50 text-right">
                     <div class="row w-100">
-                        <!-- <div class="col-md-3">Ecxcel</div>
-                        <div class="col-md-3">PDF</div>-->
+
                         {{-- <div class="col-md-3">PRINT</div> --}}
 
                         <div class=" text-right">
+
+                            <button class="btn btn-outline-primary shadow-none ">
+                                <i class="text-success" data-id="status" data-feather="file-text"></i>Excel
+                            </button>
 
                             <button class="btn btn-outline-warning shadow-none ">
                                 <i class="text-warning" data-id="status" data-feather="printer"></i> print
                             </button>
 
-                            <button class="btn btn-outline-primary shadow-none ">
-                                <i class="text-success" data-id="status" data-feather="file-text"></i>Excel
-                            </button>
 
                             <button class="btn btn-outline-danger shadow-none ">
                                 <i class="text-danger" data-id="status" data-feather="file"></i>PDF
@@ -208,12 +207,10 @@ use Carbon\Carbon;
 @push('custom_scripts')
 <script>
     feather.replace()
-
 </script>
 <script>
     $().ready(function() {
         getEmployeeList();
-
         function show_toast(title, body, color_class, bg_class) {
             const myToastEl = $($(".toast"));
             myToastEl.find(".toast_title").text(title);
@@ -277,7 +274,6 @@ use Carbon\Carbon;
                 console.log("Request Ended");
             });
         })
-
 
 
 
@@ -351,6 +347,8 @@ use Carbon\Carbon;
                     <div class="col-md-12 text-right">
                         <button class="btn btn-outline-danger shadow-none" >CANCEL</button>
                         <button class="btn btn-outline-success shadow-none" >SAVE CHANGES</button>
+                        <button class="btn btn-outline-success shadow-none" >Print</button>
+                        <button class="btn btn-outline-success shadow-none" >Download</button>
                     </div>
                 </div>
 

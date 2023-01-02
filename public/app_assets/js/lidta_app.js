@@ -18,7 +18,6 @@ $(".change_theme").on('click', function () {
 
 
 function toggleDarkLightTheme() {
-
     let checkTheme = $("body").hasClass('dark_mode');
     if (checkTheme) {
         $("body").removeClass('dark_mode');
@@ -48,7 +47,7 @@ $('body').on('click', '.selectall', function (e) {
         }
         $(".toggle_class").toggle();
         $(this).hide();
-        $(".sidebar_section, .main_page_section, .nav_bar_section,.footer_section, .side_bar_title").removeClass('active');
+            $(".sidebar_section, .main_page_section, .nav_bar_section,.footer_section, .side_bar_title").removeClass('active');
         $(".sidebar_section, .main_page_section, .nav_bar_section,.footer_section, .side_bar_title").removeClass('inactive');
         $(".sidebar_section, .main_page_section, .nav_bar_section,.footer_section, .side_bar_title").addClass(status);
     });
